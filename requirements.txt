@@ -1,0 +1,4 @@
+Django==4.2.7
+django_filebrowser==4.0.3
+Faker==19.11.0
+python-slugify==8.0.1

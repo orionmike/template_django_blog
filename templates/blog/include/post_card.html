@@ -1,0 +1,28 @@
+<div>
+    <div class="uk-card uk-card-default">
+        <div class="image-block">
+            <a class="" href="{{ p.get_url }}">
+                <img class="uk-width-1-1" src="{{ p.image.url }}" alt="{{ t.title }}" uk-img>
+            </a>
+        </div>
+        <div class="uk-margin uk-padding-small">
+            <h2 class="uk-margin-remove"><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h2>
+            <p>{{ p.preview_text }}</p>
+        </div>
+    </div>
+</div>
+
+{% comment "tags" %}
+{% for t in p.tag_list.all %}
+<div class="uk-card-body">
+    <a class="uk-label uk-label-success" href="{{ t.get_absolute_url }}">{{ t.title }}</a>
+</div>
+{% endfor %}
+{% endcomment %}
+
+
+{% comment "readmore" %}
+<div class="uk-card-footer">
+    <div><a class="uk-button uk-button-primary" href="{{ p.get_absolute_url }}">Подробнее</a></div>
+</div>
+{% endcomment %}
