@@ -1,3 +1,3 @@
-from catalog.models import ProductCategory
+from blog.models import Category
 
-CATEGORY_LIST = ProductCategory.objects.filter(is_publish=True).order_by('title')
+CATEGORY_LIST = Category.objects.filter(is_publish=True).order_by('title')

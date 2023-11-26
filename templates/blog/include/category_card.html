@@ -11,18 +11,3 @@
         </div>
     </div>
 </div>
-
-{% comment "tags" %}
-{% for t in p.tag_list.all %}
-<div class="uk-card-body">
-    <a class="uk-label uk-label-success" href="{{ t.get_absolute_url }}">{{ t.title }}</a>
-</div>
-{% endfor %}
-{% endcomment %}
-
-
-{% comment "readmore" %}
-<div class="uk-card-footer">
-    <div><a class="uk-button uk-button-primary" href="{{ p.get_absolute_url }}">Подробнее</a></div>
-</div>
-{% endcomment %}
