@@ -6,7 +6,6 @@ from django.urls import reverse
 from filebrowser.fields import FileBrowseField
 
 from _utils.utils import get_slug
-from blog.models import ProductCategory
 
 
 class Category(models.Model):
@@ -52,6 +51,7 @@ class Tag(models.Model):
     title = models.CharField(max_length=50)
     is_publish = models.BooleanField(default=True)
     slug = models.CharField(max_length=150, blank=True, unique=True)
+
     preview_text = models.TextField(blank=True)
     full_text = models.TextField(blank=True)
 
@@ -95,17 +95,12 @@ class Post(models.Model):
     keywords = models.CharField(max_length=250, blank=True)
 
     image = FileBrowseField(
-        "Image",
-        max_length=200,
-        directory="media/work-list",
-        extensions=[".webp", ".jpg", ".png"],
-        blank=True,
-        null=True,
+        "Image", max_length=200, directory="media/work-list",
+        extensions=[".webp", ".jpg", ".png"], blank=True, null=True,
     )
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, default=1)
     tag_list = models.ManyToManyField('Tag', blank=True, related_name='post_list')
-    type_post = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, blank=True, default=1)
 
     preview_text = models.TextField(blank=True)
     full_text = models.TextField(blank=True)
