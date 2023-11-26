@@ -1,7 +1,7 @@
 
 from django.core.management.base import BaseCommand
 from faker import Faker
-from blog.models import Category, Post
+from blog.models import Category, Post, Tag
 from filebrowser.fields import FileObject
 
 from faker.providers import *
@@ -22,7 +22,7 @@ class Command(BaseCommand):
 
         print(cat_list_id)
 
-        tag_list = list(Category.objects.all())
+        tag_list = list(Tag.objects.all())
 
         count = 0
 
@@ -30,7 +30,8 @@ class Command(BaseCommand):
 
             random_category_id = random.choice(cat_list_id)
             # print(random_category_id)
-            random_tags = random.sample(list(tag_list), 3)
+            random_tags = random.sample(tag_list, 3)
+            print(random_tags)
 
             ind = str(index + 1).zfill(2)
             # image = FileObject(f'blog/post-{ind}/post-{ind}.webp')
@@ -43,7 +44,7 @@ class Command(BaseCommand):
                 full_text=fake.paragraph(nb_sentences=6),
                 # image=image
             )
-            # post.tag_list.set(random_tags)
+            post.tag_list.set(random_tags)
             post.save()
             count += 1
 

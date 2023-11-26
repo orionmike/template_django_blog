@@ -32,15 +32,12 @@
             </li>
         </ul>
 
-        {% comment "search" %}
-
         <div class="uk-navbar-item">
-            <form action="{% url 'product_list' %}" class="uk-search uk-search-default">
+            <form action="{% url 'search_post_list' %}" class="uk-search uk-search-default">
                 <a href="" class="uk-search-icon-flip" uk-search-icon></a>
                 <input class="uk-search-input" type="search" name="search" placeholder="Поиск" aria-label="Search">
             </form>
         </div>
-        {% endcomment %}
 
     </div>
 </nav>

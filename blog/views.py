@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, render
 from _utils.utils import get_pagination
 from config.config import PAGINATE_BY
 
-from .models import Category, Post
+from .models import Category, Post, Tag
 
 
 def search_post_list(request):
@@ -13,7 +13,7 @@ def search_post_list(request):
 
     if search:
         post_list = Post.objects.filter(title__icontains=search, is_publish=True)
-        post_list, paginator, is_paginated, prev_url, next_url = get_pagination(request, post_list, PAGINATE_BY)
+        object_list, paginator, is_paginated, prev_url, next_url = get_pagination(request, post_list, PAGINATE_BY)
 
     else:
         post_list = Post.objects.filter(is_publish=True)
@@ -82,6 +82,28 @@ def category_detail(request, slug):
         'blog/category_detail.html',
         context={
             'category': category,
+            'object_list': object_list,
+            'is_paginated': is_paginated,
+            'next_page': next_url,
+            'prev_page': prev_url,
+        })
+
+
+def tag_detail(request, slug):
+
+    tag = Tag.objects.filter(slug=slug).first()
+
+    # post_list = Post.objects.filter(tag_list_set.contains(tag)).all()
+    post_list = tag.post_list.all()
+    object_list, paginator, is_paginated, prev_url, next_url = get_pagination(request, post_list, PAGINATE_BY)
+
+    print(object_list)
+
+    return render(
+        request,
+        'blog/tag_detail.html',
+        context={
+            'tag': tag,
             'object_list': object_list,
             'is_paginated': is_paginated,
             'next_page': next_url,

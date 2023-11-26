@@ -7,17 +7,21 @@
             </a>
         </div>
         {% endcomment %}
-        <div>
-            {% for t in p.tag_list.all %}
-            <div class="uk-card-body">
-                <a class="uk-label uk-label-success" href="{{ t.get_absolute_url }}">{{ t.title }}</a>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="uk-margin uk-padding-small">
+        <div class="uk-card-header">
             <h2 class="uk-margin-remove"><a href="{{ p.get_url }}">{{ p.title }}</a></h2>
+
+        </div>
+
+        <div class="uk-card-body">
+            <div>
+                {% for t in p.tag_list.all %}
+                <a class="uk-label uk-label-success" href="{{ t.get_url }}">{{ t.title }}</a>
+                {% endfor %}
+            </div>
+
             <p>{{ p.preview_text }}</p>
         </div>
+
         <div class="uk-card-footer">
             <div><a class="uk-button uk-button-primary" href="{{ p.get_url }}">Подробнее</a></div>
         </div>

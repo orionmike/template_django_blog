@@ -32,6 +32,13 @@
 
 <h1>{{ post.title }}</h1>
 
+<div>
+    {% for t in p.tag_list.all %}
+    <a class="uk-label uk-label-success" href="{{ t.get_url }}">{{ t.title }}</a>
+    {% endfor %}
+</div>
+
+
 <div uk-grid>
 
     <div uk-lightbox class="uk-width-1-2@m">
