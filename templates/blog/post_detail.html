@@ -2,8 +2,6 @@
 {% block title %}
 {{ post.title }} | {{ site_title }}
 {% endblock %}
-
-
 {% block breadcrumps %}
 <ul class="uk-breadcrumb" itemscope itemtype="https://schema.org/BreadcrumbList">
     <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
@@ -26,21 +24,14 @@
     </li>
 </ul>
 {% endblock %}
-
-
 {% block content %}
-
 <h1>{{ post.title }}</h1>
-
 <div>
     {% for t in p.tag_list.all %}
     <a class="uk-label uk-label-success" href="{{ t.get_url }}">{{ t.title }}</a>
     {% endfor %}
 </div>
-
-
 <div uk-grid>
-
     <div uk-lightbox class="uk-width-1-2@m">
         <div>
             <a href="{{ post.image.url }}">
@@ -57,7 +48,6 @@
             {% endfor %}
         </div>
     </div>
-
     <div class="uk-width-1-2@m">
         <div>
             <div>
@@ -71,52 +61,6 @@
         </div>
     </div>
 </div>
-
-
-<div class="bottom-project-nav uk-width-1-1 uk-margin">
-
-    <div class="work-navigation uk-margin-large uk-child-width-1-2@m" uk-grid uk-height-match="target: > div > .uk-card">
-
-        {% if post_next is not None %}
-        <div>
-            <a class=" card-work" href="{{ post_next.get_url }}">
-                <div class="uk-card uk-card-default">
-                    <div class="card-header">
-                        <img class="uk-width-1-1" data-src="/media/{{ post_next.image }}" alt="{{ post_next.title }}" uk-img>
-                    </div>
-                    <div class="uk-card-body">
-                        <h4>Назад: {{ post_next.title }}</h4>
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% endif %}
-
-        {% if post_previos is not None %}
-        <div>
-            <a class="card-work" href="{{ post_previos.get_url }}">
-                <div class="uk-card uk-card-default">
-                    <div class="card-header">
-                        <img class="uk-width-1-1" data-src="/media/{{ post_previos.image }}" alt="{{ post_previos.title }}" uk-img>
-                    </div>
-                    <div class="uk-card-body">
-                        <h4>Вперед: {{ post_previos.title }}</h4>
-                    </div>
-                </div>
-            </a>
-        </div>
-        {% endif %}
-
-    </div>
-
-</div>
-
-<h2>Посты из категории</h2>
-
-<div class="uk-child-width-1-2@s uk-child-width-1-3@m" uk-grid uk-height-match="target: > div > .uk-card">
-    {% for p in related_post_list  %}
-        {% include "blog/include/post_card.html" %}
-    {% endfor %}
-</div>
-
+{% include 'blog/include/post_related.html' %}
+{% include 'blog/include/post_nav.html' %}
 {% endblock %}
