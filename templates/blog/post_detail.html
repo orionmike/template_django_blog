@@ -34,15 +34,15 @@
 <div uk-grid>
     <div uk-lightbox class="uk-width-1-2@m">
         <div>
-            <a href="{{ post.image.url }}">
-                <img class="uk-width-1-1" data-src="{{ post.image.url }}" alt="{{ post.title }}" uk-img>
+            <a href="/media/{{ post.image.url }}">
+                <img class="uk-width-1-1" data-src="/media/{{ post.image.url }}" alt="{{ post.title }}" uk-img>
             </a>
         </div>
         <div class="uk-margin" uk-grid>
             {% for img in image_list %}
             <div class="uk-width-1-6">
-                <a href="{{ post_image_dir }}/{{ img }}">
-                    <img data-src="{{ post_image_dir }}/{{ img }}" alt="{{ post.title }}" uk-img>
+                <a href="{{ img }}">
+                    <img data-src="{{ img }}" alt="{{ post.title }}" uk-img>
                 </a>
             </div>
             {% endfor %}

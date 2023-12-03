@@ -6,6 +6,8 @@ from config.config import PAGINATE_BY
 
 from .models import Category, Post, Tag
 
+from _utils.utils import get_foto_list
+
 
 def search_post_list(request):
 
@@ -57,11 +59,16 @@ def post_detail(request, slug):
         is_publish=True,
         category_id=post.category).order_by('?').exclude(pk=post.pk)[:6]
 
+    image_list = get_foto_list(post)
+    print(image_list)
+
     return render(
         request,
         'blog/post_detail.html',
         context={
             'post': post,
+
+            'image_list': image_list,
 
             'post_next': post_next,
             'post_previos': post_previos,
