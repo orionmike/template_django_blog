@@ -1,0 +1,10 @@
+<div class="uk-margin">
+    <h3>
+        Категории
+    </h3>
+    <ul class="uk-list">
+        {% for category in category_list %}
+        <li><a href="{{ category.get_url }}">{{ category.title }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

@@ -1,29 +1,23 @@
 <div>
     <div class="uk-card uk-card-default">
-
         <div class="image-block">
             <a class="" href="{{ p.get_url }}">
                 <img class="uk-width-1-1" data-src="/media/{{ p.image.url }}" alt="{{ p.title }}" uk-img>
             </a>
         </div>
-
         <div class="uk-card-header">
             <h2 class="uk-margin-remove"><a href="{{ p.get_url }}">{{ p.title }}</a></h2>
         </div>
-
         <div class="uk-card-body">
             <div>
                 {% for t in p.tag_list.all %}
                 <a class="uk-label uk-label-success" href="{{ t.get_url }}">{{ t.title }}</a>
                 {% endfor %}
             </div>
-
             <p>{{ p.preview_text }}</p>
         </div>
-
         <div class="uk-card-footer">
             <div><a class="uk-button uk-button-primary" href="{{ p.get_url }}">Подробнее</a></div>
         </div>
     </div>
 </div>
-

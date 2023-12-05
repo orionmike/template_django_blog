@@ -26,14 +26,8 @@
 
 <div uk-grid>
     <div class="uk-width-1-4@m">
-        <h3>
-            Категории
-        </h3>
-        <ul class="uk-list">
-        {% for category in category_list %}
-            <li><a href="{{ category.get_url }}">{{ category.title }}</a></li>
-        {% endfor %}
-        </ul>
+        {% include 'blog/include/side_bar_category.html' %}
+        {% include 'blog/include/side_bar_tag.html' %}
     </div>
 
     <div class="uk-width-3-4@m">

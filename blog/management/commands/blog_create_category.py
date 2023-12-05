@@ -1,9 +1,11 @@
 
-
 from django.core.management.base import BaseCommand
-from blog.models import Category
-
 from faker import Faker
+from filebrowser.fields import FileObject
+
+from _generator_image.generate_set import generate_image_category
+from _utils.utils import get_slug
+from blog.models import Category
 
 
 class Command(BaseCommand):
@@ -17,12 +19,18 @@ class Command(BaseCommand):
 
         for _ in range(10):
 
-            name = f'Category {str(count+1).zfill(2)}'
+            category_name = f'Category {str(count+1).zfill(2)}'
+
+            slug = get_slug(category_name)
+
+            image_path = f'blog/category/{slug}/{slug}.webp'
+            generate_image_category(image_path)
 
             Category.objects.create(
-                title=name,
+                title=category_name,
                 preview_text=fake.paragraph(nb_sentences=1),
                 full_text=fake.paragraph(nb_sentences=3),
+                image=FileObject(image_path),
             )
 
             count += 1

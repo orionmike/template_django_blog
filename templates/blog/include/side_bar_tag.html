@@ -1,0 +1,10 @@
+<div class="uk-margin">
+    <h3>
+        Теги
+    </h3>
+    <div>
+        {% for tag in tag_list %}
+        <a class="uk-label uk-label-success" href="{{ tag.get_url }}">{{ tag.title }}</a></li>
+        {% endfor %}
+    </div>
+</div>

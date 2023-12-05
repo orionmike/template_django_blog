@@ -1,8 +1,5 @@
-
 <div class="bottom-project-nav uk-width-1-1 uk-margin">
-
     <div class="work-navigation uk-margin-large uk-child-width-1-2@m" uk-grid uk-height-match="target: > div > .uk-card">
-
         {% if post_next is not None %}
         <div>
             <a class=" card-work" href="{{ post_next.get_url }}">
@@ -17,7 +14,6 @@
             </a>
         </div>
         {% endif %}
-
         {% if post_previos is not None %}
         <div>
             <a class="card-work" href="{{ post_previos.get_url }}">
@@ -32,7 +28,5 @@
             </a>
         </div>
         {% endif %}
-
     </div>
-
 </div>

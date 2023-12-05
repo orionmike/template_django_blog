@@ -7,6 +7,10 @@ from . libs.image import generate_random_image
 from . libs.utils import get_execute_time
 
 
+def generate_image_category(file_path):
+    generate_random_image(f'media/{file_path}')
+
+
 def generate_image_post(file_path):
 
     start = time.time()

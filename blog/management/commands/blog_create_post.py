@@ -37,7 +37,7 @@ class Command(BaseCommand):
             ind = str(index + 1).zfill(2)
             # image = FileObject(f'blog/post-{ind}/post-{ind}.webp')
 
-            image_path = f'blog/post-{ind}/post-{ind}.webp'
+            image_path = f'blog/post/post-{ind}/post-{ind}.webp'
             generate_image_post(image_path)
 
             post = Post.objects.create(

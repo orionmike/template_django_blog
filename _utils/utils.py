@@ -41,12 +41,13 @@ def get_foto_list(obj) -> list:
 
     image_dir = Path(str(obj.image)).parent
     abs_work_dir = BASE_DIR / 'media' / image_dir / 'foto'
+    print(abs_work_dir)
 
     image_list = []
     image_path_list = list(abs_work_dir.glob('**/*.*'))
     for img in image_path_list:
         if img.suffix in ['.webp', '.jpg']:
-            image_list.append(f'/media/{image_dir.parent.name}/{image_dir.name}/foto/{img.name}')
+            image_list.append(f'/media/blog/{image_dir.parent.name}/{image_dir.name}/foto/{img.name}')
 
     image_list.sort()
 

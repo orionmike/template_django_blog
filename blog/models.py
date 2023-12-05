@@ -12,6 +12,12 @@ class Category(models.Model):
     title = models.CharField(max_length=150, db_index=True)
     is_publish = models.BooleanField(default=True)
     slug = models.CharField(max_length=150, blank=True, unique=True)
+
+    image = FileBrowseField(
+        "Image", max_length=200, directory="media/blog/category",
+        extensions=[".webp", ".jpg"], blank=True, null=True,
+    )
+
     preview_text = models.TextField(blank=True)
     full_text = models.TextField(blank=True)
 
@@ -95,8 +101,8 @@ class Post(models.Model):
     keywords = models.CharField(max_length=250, blank=True)
 
     image = FileBrowseField(
-        "Image", max_length=200, directory="media/work-list",
-        extensions=[".webp", ".jpg", ".png"], blank=True, null=True,
+        "Image", max_length=200, directory="media/blog/post",
+        extensions=[".webp", ".jpg"], blank=True, null=True,
     )
 
     category = models.ForeignKey(Category, on_delete=models.CASCADE, blank=True, default=1)
