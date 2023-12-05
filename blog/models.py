@@ -74,9 +74,6 @@ class Tag(models.Model):
 
         super().save(*args, **kwargs)
 
-    # def get_posts(self):
-    #     return Post.objects.filter(tag_list.contains)
-
     def get_url(self):
         return reverse('tag_detail', kwargs={'slug': self.slug})
 

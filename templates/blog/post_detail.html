@@ -26,8 +26,8 @@
 {% endblock %}
 {% block content %}
 <h1>{{ post.title }}</h1>
-<div>
-    {% for t in p.tag_list.all %}
+<div class="uk-margin">
+    {% for t in post.tag_list.all %}
     <a class="uk-label uk-label-success" href="{{ t.get_url }}">{{ t.title }}</a>
     {% endfor %}
 </div>

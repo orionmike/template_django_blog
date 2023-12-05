@@ -60,7 +60,7 @@ def post_detail(request, slug):
         category_id=post.category).order_by('?').exclude(pk=post.pk)[:6]
 
     image_list = get_foto_list(post)
-    print(image_list)
+    # print(image_list)
 
     return render(
         request,
@@ -104,7 +104,7 @@ def tag_detail(request, slug):
     post_list = tag.post_list.all()
     object_list, paginator, is_paginated, prev_url, next_url = get_pagination(request, post_list, PAGINATE_BY)
 
-    print(object_list)
+    # print(object_list)
 
     return render(
         request,

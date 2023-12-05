@@ -18,7 +18,7 @@ def generate_image_post(file_path):
     generate_random_image(f'media/{file_path}')
 
     path_dir_foto = Path(f'media/{file_path}').parent / DIR_PHOTO
-    print(path_dir_foto)
+    # print(path_dir_foto)
 
     for index in range(6):
         ind = str(index+1).zfill(2)
